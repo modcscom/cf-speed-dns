@@ -26,14 +26,11 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: './*.html'
 
-      - name: List uploaded artifacts
-        run: ls -l ./*.html
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'  # 仓库根目录，包含 index.html 等页面文件
 
       - name: Deploy to GitHub Pages
         id: deployment
