@@ -23,17 +23,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true  # ✅ 添加这一行
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: './*.html'  # 确保路径正确
+          path: './*.html'
+
       - name: List uploaded artifacts
-        run: |
-          echo "Artifacts:"
-          ls -l ./*.html  # 列出上传的文件
+        run: ls -l ./*.html
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
